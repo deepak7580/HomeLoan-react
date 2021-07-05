@@ -1,24 +1,25 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import "./App.css";
+import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { CustomerList } from "./pages/CustomerList";
+import { CustomerUpsert } from "./pages/CustomerUpsert";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="bg-dark text-light p-3 d-flex justify-content-end">
+        <Link to="/customer-list" className="text-light mr-5">
+          <h6>Customer List</h6>
+        </Link>
+        <Link to="/customer-upsert" className="text-light">
+          <h6>Customer Upsert</h6>
+        </Link>
+      </div>
+
+      <Route exact path="/" component={CustomerList} />
+      <Route exact path="/customer-upsert" component={CustomerUpsert} />
+      <Route exact path="/customer-list" component={CustomerList} />
+    </Router>
   );
 }
 
